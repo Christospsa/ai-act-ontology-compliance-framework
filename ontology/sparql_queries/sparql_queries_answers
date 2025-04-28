@@ -1,0 +1,58 @@
+#1ST QUESTION
+
+PREFIX : <http://example.org/ai-act-risk#>
+
+SELECT ?system ?riskCategory
+WHERE {
+  ?system a :AI_System ;
+          :hasRiskCategory ?riskCategory .
+}
+
+
+#2nd QUESTION
+PREFIX : <http://example.org/ai-act-risk#>
+
+SELECT ?system ?complianceCheck
+WHERE {
+  ?system a :AI_System ;
+          :hasComplianceCheck ?complianceCheck .
+}
+
+#3rd QUESTION
+PREFIX : <http://example.org/ai-act-risk#>
+
+SELECT ?system ?documentation
+WHERE {
+  ?system a :AI_System ;
+          :hasTechnicalDocumentation ?documentation .
+}
+
+#4th QUESTION
+SELECT ?system ?change
+WHERE {
+  ?system a :AI_System ;
+          :hasDeclaredChange ?change .
+}
+
+#5th QUESTION
+SELECT ?system ?monitoringPlan
+WHERE {
+  ?system a :HighRiskAI ;
+          :requiresPostMarketMonitoringPlan ?monitoringPlan .
+}
+
+#6th QUESTION
+SELECT ?system ?activity
+WHERE {
+  ?system a :HighRiskAI ;
+          :hasComplianceActivity ?activity .
+}
+ 
+#7th QUESTION
+SELECT ?system ?registration ?identifier ?code
+WHERE {
+  ?system a :AI_System ;
+          :hasRegistration ?registration ;
+          :hasIdentifier ?identifier .
+  ?identifier :identifierCode ?code .
+}
