@@ -1,0 +1,90 @@
+Section 1: Background Information
+Goal: Understand the participant’s profile and baseline knowledge.
+What is your current role?
+•	Researcher / Academic
+•	Student (Master / PhD)
+•	Legal professional (Data Protection / AI Law)
+•	Technical professional (AI / Risk Management / Standardization)
+•	Other: _________
+How familiar are you with the EU AI Act?
+•	Not at all familiar
+•	Slightly familiar
+•	Moderately familiar
+•	Very familiar
+•	Expert level
+How familiar are you with ontologies and semantic modeling?
+•	Not at all familiar
+•	Slightly familiar
+•	Moderately familiar
+•	Very familiar
+•	Expert level
+How many years of experience they have in this field?
+Section 2: Framework Overview
+Short Description of the Framework:
+This ontology-based framework models compliance obligations under the EU AI Act, focusing on risk classification, documentation, monitoring, and registration requirements. The ontology reflects the risk-based approach of the Act and supports reasoning over obligations using machine-readable queries. By answering competency questions (e.g., “What is the risk category of this AI system?”), the framework allows compliance officers and other stakeholders to assess system status and obligations efficiently.
+Example Competency Question and SPARQL Query:
+Competency Question:
+"What is the risk category of a given AI system?"
+
+SPARQL Query Example:
+SELECT ?system ?riskCategory WHERE {
+  ?system a :AI_System ;
+          :hasRiskCategory ?riskCategory .
+}
+Section 3: Usability and Usefulness Assessment
+Please indicate your agreement with the following statements:
+(1 = Strongly Disagree, 5 = Strongly Agree)
+#	Statement	1	2	3	4	5
+Q1	The ontology-based framework is easy to understand.	☐	☐	☐	☐	☐
+Q2	The structure of the ontology is clear and logically organized.	☐	☐	☐	☐	☐
+Q3	The framework supports practical reasoning about AI Act obligations.	☐	☐	☐	☐	☐
+Q4	I could imagine using this framework (or a similar one) in a compliance or documentation task.	☐	☐	☐	☐	☐
+Q5	The SPARQL-based compliance questions are understandable.	☐	☐	☐	☐	☐
+Q6	The framework adequately represents risk-based classification as required by the AI Act.	☐	☐	☐	☐	☐
+Q7	I find the idea of linking legal obligations to machine-readable queries valuable.	☐	☐	☐	☐	☐
+Q8	The framework could be extended or reused for other regulations (e.g., GDPR).	☐	☐	☐	☐	☐
+
+
+
+	
+					
+						
+
+Section 4: Open Feedback (Qualitative Questions)
+•	What do you find most useful about the framework?
+•	What aspects were unclear or confusing?
+•	Do you see any important elements missing (e.g., specific obligations, categories)?
+•	Do you have suggestions for improvement or additional use cases?
+
+
+
+What I will also offer to the participants: 
+A simplified, high-level diagram showing:
+•	The main classes:
+AI_System, HighRiskAI, RiskCategory, ARComplianceCheck, AIRegistrationProcess, AISystemIdentifier, PostMarketMonitoringPlan, ComplianceActivity, AISystemChangeDeclaration, TechnicalDocumentation.
+•	The key object properties (connections):
+hasRiskCategory, hasComplianceCheck, hasRegistration, hasIdentifier, requiresPostMarketMonitoringPlan, hasComplianceActivity, hasDeclaredChange, hasTechnicalDocumentation.
+Competency Questions (CQs):
+•	CQ1: What is the risk category of a given AI system?
+•	CQ2: Has the AI system undergone the required conformity assessment procedure?
+•	CQ3: What technical documentation and system logs are associated with a specific AI system?
+•	CQ4: Which declared changes have been made to an AI system post-deployment?
+•	CQ5: Is there a post-market monitoring plan and review process linked to the system?
+•	CQ6: What compliance activities have been assigned to a provider for a high-risk AI system?
+•	CQ7: What is the status of the AI system registration and identifier metadata?
+Example Use Case Scenario (for Survey Participants)
+Scenario:
+An AI provider develops a biometric identification system that falls under the High-Risk category according to the EU AI Act.
+The provider wants to ensure that the system complies with the mandatory obligations, including:
+•	Risk classification confirmation (Is it classified as high-risk?)
+•	Verification of conformity assessment completion
+•	Registration in the official EU database
+•	Existence of a post-market monitoring plan
+•	Assignment of required compliance activities (e.g., Fundamental Rights Impact Assessment)
+How the Ontology Framework Supports This:
+The compliance officer can use the ontology-based framework to retrieve this information by asking questions like:
+•	“Is this AI system registered and does it have an identifier?”
+•	“Has the required conformity assessment procedure been completed?”
+•	“Does the system have an active post-market monitoring plan?”
+These questions are answered through machine-readable queries (SPARQL), allowing automated compliance checking and easy reasoning about the system’s obligations under the AI Act.
+
