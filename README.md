@@ -21,7 +21,6 @@ It was developed as part of a master's thesis project and is intended to support
 | `survey/`            | Survey structure, ontology diagram, and screenshots of Qualtrics interface. |
 | `sparql_queries/`    | Competency Questions (CQs) and SPARQL queries used to validate the ontology. |
 | `mapping_table/`     | Excel sheets used to map AI Act articles to ontology concepts.              |
-| `results/` *(opt)*   | Example SPARQL query outputs (to be added).                                 |
 | `README.md`          | You’re here! Overview and navigation guide for the repository.              |
 
 ---
