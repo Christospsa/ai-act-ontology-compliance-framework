@@ -1,0 +1,103 @@
+# SPARQL Query Results (from Protégé)
+
+This file presents the text-based outputs of the seven SPARQL competency questions (CQ1–CQ7), along with corresponding screenshot images stored in the `/results_screenshots/` folder.
+
+Each entry includes:
+- Human-readable query results
+- Link to matching screenshot for validation
+
+---
+
+Related files:
+- [Competency Questions](./competency_questions_queries.md)
+- [SPARQL Queries](./sparql_queries_questions.md)
+- [Query Result Screenshots](./results_screenshots/)
+
+---
+
+## CQ1: What is the risk category of a given AI system?
+
+system         | riskCategory
+-------------- | -------------
+AI_System_001  | HighRisk
+AI_System_003  | MinimalRisk
+AI_System_002  | LimitedRisk
+
+![CQ1](results_screenshots/Query1.png)
+
+---
+
+## CQ2: Has the AI system undergone the required conformity assessment?
+system         | complianceCheck
+-------------- | ----------------------
+AI_System_001  | ComplianceCheck_001
+AI_System_003  | ComplianceCheck_003
+AI_System_002  | ComplianceCheck_002
+
+
+![CQ2](results_screenshots/Query2.png)
+
+---
+
+## CQ3: What technical documentation is associated with each AI system?
+
+system         | documentation
+-------------- | -----------------------
+AI_System_002  | TechnicalDoc_002
+AI_System_001  | TechnicalDoc_001
+AI_System_003  | TechnicalDoc_003
+
+
+![CQ3](results_screenshots/Query3.png)
+
+---
+
+## CQ4: Which declared changes have been made post-deployment?
+
+system         | change
+-------------- | ------------------------------------------
+AI_System_001  | Performance optimization update v1.2
+AI_System_002  | Retraining on new dataset Q2 2025
+
+
+![CQ4](results_screenshots/Query4.png)
+
+---
+
+## CQ5: Is there a post-market monitoring plan in place?
+
+system         | monitoringPlan
+-------------- | ---------------------------------------------
+AI_System_001  | Monitoring Plan for AI System 001
+
+
+![CQ5](results_screenshots/Query5.png)
+
+---
+
+## CQ6: What compliance activities are assigned to the high-risk AI system?
+
+system         | activity
+-------------- | ----------------------------------------------
+AI_System_001  | FRIA for Biometric Identification System
+AI_System_001  | Continuous Compliance Monitoring for System 001
+
+
+![CQ6](results_screenshots/Query6.png)
+
+---
+
+## CQ7: What is the registration and identifier metadata?
+
+system         | registration     | identifier               | code
+-------------- |------------------|---------------------------|-----------------------------------------
+AI_System_001  | Registration_001 | AISystemIdentifier_001   | "AI-SYS-001-2025"
+AI_System_002  | Registration_002 | AISystemIdentifier_002   | "AI-SYS-002-2025"
+
+
+![CQ7](results_screenshots/Query7.png)
+
+
+
+
+
