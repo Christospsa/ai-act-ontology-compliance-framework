@@ -1,6 +1,6 @@
 # AI Act Ontology Compliance Framework
 
-This repository contains an ontology-based framework developed for modeling compliance obligations under the European Union AI Act.
+This repository contains an ontology-based framework developed for modelling compliance obligations under the European Union AI Act.
 
 The framework focuses on key regulatory domains including:
 - Risk classification
