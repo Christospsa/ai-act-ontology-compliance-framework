@@ -5,7 +5,7 @@ This repository contains SHACL shapes designed to validate key constraints and l
 ## Contents
 
 - `SHACL_SHAPES.ttl` — Core SHACL shapes for validation
-- `explanation.docs` — Conceptual rationale and mapping strategy
+- `explanation.docx` — Conceptual rationale and mapping strategy
 - `docs/screenshots/` — Visual examples of SHACL results and ontology components
 
 ## Technologies
