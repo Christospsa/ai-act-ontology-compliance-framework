@@ -1,0 +1,349 @@
+@prefix dpv: <https://w3id.org/dpv#> .
+@prefix ex: <http://example.org/ai-act-risk#> .
+@prefix gdprov: <https://w3id.org/GDPRov#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+
+ex:BiasRiskAssessment a owl:Class ;
+    rdfs:subClassOf dpv:RiskAssessment ;
+    rdfs:label "Bias Risk Assessment" ;
+    rdfs:comment "A specific form of risk assessment focusing on bias, in line with AI Act Art. 50." .
+
+
+ex:CleaningProcedure a owl:Class ;
+    rdfs:label "Cleaning Procedure" ;
+    rdfs:subClassOf dpv:Processing ;
+    rdfs:comment "A specific data processing activity that involves cleaning input data for AI systems." .
+
+
+ex:CollectionMethodDocumentation a owl:Class ;
+    rdfs:label "Collection Method Documentation" ;
+    rdfs:comment "A custom concept representing documentation detailing the methods used for data collection, including tools, procedures, and responsible parties." ;
+    rdfs:subClassOf dpv:OrganisationalMeasure .
+
+
+ex:DataMinimizationPrinciple a owl:Class ;
+    rdfs:label "Data Minimization Principle" ;
+    rdfs:comment "Principle that personal data shall be adequate, relevant, and limited to what is necessary. Based on GDPR Article 5(1)(c)." ;
+    gdprov:wasDerivedFrom "GDPR-Article-5-1-c"^^xsd:string .
+
+
+ex:DataProtectionByAuthority a owl:Class ;
+    rdfs:label "Data Protection by Authority" ;
+    rdfs:comment "Represents data protection oversight or enforcement actions conducted by a supervisory authority, in accordance with GDPR Articles 51–59." ;
+    gdprov:wasAssociatedWith ex:SupervisoryAuthority ;
+    gdprov:wasDerivedFrom "GDPR-Article-51-59"^^xsd:string .
+
+
+ex:DocumentationAccessProvision a odrl:Policy ;
+    rdfs:label "Documentation Access Provision" ;
+    rdfs:comment "A custom policy defining the conditions under which documentation can be accessed." ;
+    odrl:permission [
+        odrl:action odrl:read ;
+        odrl:assignee <http://example.org/party#UserGroup> ;
+        odrl:constraint [
+            odrl:leftOperand odrl:dateTime ;
+            odrl:operator odrl:lt ;
+            odrl:rightOperand "2025-12-31T23:59:59Z"^^xsd:dateTime
+        ]
+    ] .
+ex:DocumentationDisclosure a odrl:Duty ;
+    rdfs:label "Documentation Disclosure" ;
+    rdfs:comment "A custom duty requiring the disclosure of specific documentation as part of a policy obligation." ;
+    odrl:action odrl:inform .
+
+
+ex:DocumentationDisclosureOnRequest a odrl:Duty ;
+    rdfs:label "Documentation Disclosure on Request" ;
+    rdfs:comment "A custom duty requiring the disclosure of documentation upon request." ;
+    odrl:action odrl:inform .
+
+
+ex:ErrorFreeness a owl:Class ;
+    rdfs:label "Error Freeness" ;
+    rdfs:subClassOf dpv:RiskMitigationMeasure ;
+    rdfs:comment "A custom concept representing measures to ensure data processing is free from errors." .
+
+ex:LabelingMethod a owl:Class ;
+    rdfs:label "Labeling Method" ;
+    rdfs:subClassOf dpv:Processing ;
+    rdfs:comment "A custom concept representing methods used for labeling data in AI systems." .
+
+
+ex:RegulatoryAccessProvision a odrl:Policy ;
+    rdfs:label "Regulatory Access Provision" ;
+    rdfs:comment "A custom policy defining the conditions under which regulatory bodies are granted access to specific documentation." ;
+    odrl:permission [
+        odrl:action odrl:read ;
+        odrl:assignee <http://example.org/party#RegulatoryBody> ;
+        odrl:constraint [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:eq ;
+            odrl:rightOperand "regulatory-compliance"^^xsd:string
+        ]
+    ] .
+
+ex:RegulatoryAlertDuty a odrl:Duty ;
+    rdfs:label "Regulatory Alert Duty" ;
+    rdfs:comment "A custom duty requiring the notification of regulatory bodies in specific circumstances." ;
+    odrl:action odrl:inform .
+
+ex:RelevantAndRepresentativeInput a owl:Class ;
+    rdfs:label "Relevant and Representative Input" ;
+    rdfs:subClassOf dpv:Data ;
+    rdfs:comment "A custom concept representing input data that is both relevant and representative for AI system training and evaluation." .
+
+
+ex:StatisticalRepresentativeness a owl:Class ;
+    rdfs:label "Statistical Representativeness" ;
+    rdfs:subClassOf dpv:RiskMitigationMeasure ;
+    rdfs:comment "A custom concept representing measures to ensure that data samples are statistically representative of the target population." .
+
+ex:SupportsDPIA a owl:ObjectProperty ;
+    rdfs:label "Supports DPIA" ;
+    rdfs:comment "Indicates that a measure, tool, or resource supports the execution or documentation of a Data Protection Impact Assessment (DPIA)." ;
+    rdfs:domain dpv:OrganisationalMeasure ;
+    rdfs:range dpv:DPIA .
+
+ex:AccessPolicy a owl:Class ;
+    rdfs:label "Access Policy" ;
+    rdfs:comment "A policy defining rules and responsibilities governing access to personal data. Related to GDPR Article 5(1)(f) and Article 32." ;
+    gdprov:wasDerivedFrom "GDPR-Article-5-1-f, GDPR-Article-32"^^xsd:string .
+
+
+ex:AIAwarenessDisclosure a odrl:Duty ;
+    rdfs:label "AI Awareness Disclosure" ;
+    rdfs:comment "A custom duty requiring the disclosure of AI system usage to end-users, ensuring transparency and informed consent." ;
+    odrl:action odrl:inform .
+
+ex:AIInteractionNotice a odrl:Duty ;
+    rdfs:label "AI Interaction Notice" ;
+    rdfs:comment "A custom duty requiring the provision of notice to users when interacting with AI systems, ensuring transparency and informed consent." ;
+    odrl:action odrl:inform .
+
+ex:AIUseDisclosureToSubjects a odrl:Duty ;
+    rdfs:label "AI Use Disclosure to Subjects" ;
+    rdfs:comment "A custom duty requiring the disclosure to data subjects that their personal data is being processed by AI systems." ;
+    odrl:action odrl:inform .
+
+ex:BiasMitigationStrategy a owl:Class ;
+    rdfs:label "Bias Mitigation Strategy" ;
+    rdfs:subClassOf dpv:RiskMitigationMeasure ;
+    rdfs:comment "A custom concept representing strategies employed to mitigate bias in AI systems." .
+
+
+ex:CABConfidentialityObligation a owl:Class ;
+    rdfs:label "CAB Confidentiality Obligation" ;
+    rdfs:comment "A custom concept representing the confidentiality obligations of Conformity Assessment Bodies (CABs) under GDPR Article 5(1)(f) and Article 32." ;
+    gdprov:wasDerivedFrom "GDPR-Article-5-1-f, GDPR-Article-32"^^xsd:string .
+
+ex:ComplianceDisclosureDuty a odrl:Duty ;
+    rdfs:label "Compliance Disclosure Duty" ;
+    rdfs:comment "A custom duty requiring the disclosure of compliance-related information to relevant stakeholders." ;
+    odrl:action odrl:inform .
+
+ex:ComplianceObligation a odrl:Duty ;
+    rdfs:label "Compliance Obligation" ;
+    rdfs:comment "A custom duty representing an obligation to comply with specific regulatory requirements." ;
+    odrl:action odrl:inform.
+
+
+ex:ConfidentialityObligation a owl:Class ;
+    rdfs:label "Confidentiality Obligation" ;
+    rdfs:comment "A custom concept representing the obligation to maintain the confidentiality of personal data, as mandated by GDPR Article 5(1)(f)." ;
+    gdprov:wasDerivedFrom "GDPR-Article-5-1-f"^^xsd:string .
+
+
+ex:CooperationDuty a odrl:Duty ;
+    rdfs:label "Cooperation Duty" ;
+    rdfs:comment "A custom duty requiring parties to cooperate in fulfilling compliance obligations." ;
+    odrl:action odrl:inform .
+
+ex:CybersecurityMeasures a owl:Class ;
+    rdfs:label "Cybersecurity Measures" ;
+    rdfs:comment "A custom concept representing technical and organizational measures implemented to protect personal data against cyber threats." ;
+    rdfs:subClassOf dpv:OrganisationalMeasure .
+
+
+ex:DataGovernanceRequirement a owl:Class ;
+    rdfs:label "Data Governance Requirement" ;
+    rdfs:subClassOf dpv:OrganisationalMeasure ;
+    rdfs:comment "A custom concept representing requirements related to data governance policies and practices." .
+
+ex:DataProvenance a owl:Class ;
+    rdfs:label "Data Provenance" ;
+    rdfs:comment "A custom concept representing the origin and history of personal data, including its sources, processing activities, and transformations." ;
+    rdfs:subClassOf dpv:OrganisationalMeasure .
+
+
+ex:DeepfakeDisclosure a odrl:Duty ;
+    rdfs:label "Deepfake Disclosure" ;
+    rdfs:comment "A custom duty requiring the clear labeling of AI-generated or manipulated content to inform viewers of its artificial origin." ;
+    odrl:action odrl:inform  .
+
+
+ex:DeployerCooperationDuty a odrl:Duty ;
+    rdfs:label "Deployer Cooperation Duty" ;
+    rdfs:comment "A custom duty requiring AI system deployers to cooperate with regulatory authorities, ensuring compliance with applicable laws and regulations." ;
+    odrl:action odrl:inform .
+
+ex:DisclosureDuty a odrl:Duty ;
+    rdfs:label "Disclosure Duty" ;
+    rdfs:comment "A custom duty requiring the disclosure of specific information to relevant stakeholders." ;
+    odrl:action odrl:inform  .
+
+
+ex:DistributorCooperationDuty a odrl:Duty ;
+    rdfs:label "Distributor Cooperation Duty" ;
+    rdfs:comment "A custom duty requiring distributors of AI systems to cooperate with regulatory authorities, ensuring compliance with applicable laws and regulations." ;
+    odrl:action odrl:inform .
+
+
+ex:DPIAReferenceToProviderInfo a owl:Class ;
+    rdfs:label "DPIA Reference to Provider Info" ;
+    rdfs:comment "Information about the provider included in a Data Protection Impact Assessment (DPIA), expanding the semantics of dpv:DPIA." ;
+    rdfs:subClassOf dpv:DPIA .
+
+
+ex:EmotionRecognitionNotice a odrl:Duty ;
+    rdfs:label "Emotion Recognition Notice" ;
+    rdfs:comment "A custom duty requiring the disclosure to individuals that their emotional states are being analyzed by AI systems." ;
+    odrl:action odrl:inform.
+
+
+ex:FRIAContext a owl:Class ;
+    rdfs:label "FRIA Context" ;
+    rdfs:subClassOf dpv:Context ;
+    rdfs:comment "A custom concept representing the specific context in which a Fundamental Rights Impact Assessment (FRIA) is conducted, including factors such as the AI system's purpose, deployment environment, and affected stakeholders." .
+
+
+ex:FRIARiskMitigationPlan a owl:Class ;
+    rdfs:label "FRIA Risk Mitigation Plan" ;
+    rdfs:subClassOf dpv:RiskMitigationMeasure ;
+    rdfs:comment "A custom concept representing a plan to mitigate risks identified during a Fundamental Rights Impact Assessment (FRIA) as per the EU AI Act." .
+
+ex:FundamentalRightsImpactAssessment a owl:Class ;
+    rdfs:label "Fundamental Rights Impact Assessment" ;
+    rdfs:subClassOf dpv:ImpactAssessment ;
+    rdfs:comment "A custom concept representing an assessment of the potential impact of an AI system on individuals' fundamental rights, as required under Article 27 of the EU AI Act." .
+
+
+ex:ImporterDisclosureDuty a odrl:Duty ;
+    rdfs:label "Importer Disclosure Duty" ;
+    rdfs:comment "A custom duty requiring importers of AI systems to disclose relevant information to regulatory authorities, ensuring compliance with applicable laws and regulations." ;
+    odrl:action odrl:inform .
+
+ex:InformationProvision a odrl:Duty ;
+    rdfs:label "Information Provision" ;
+    rdfs:comment "A duty requiring the provision of specific information to relevant stakeholders." ;
+    odrl:action odrl:inform  .
+
+
+ex:InputDataQualityControl a owl:Class ;
+    rdfs:label "Input Data Quality Control" ;
+    rdfs:subClassOf dpv:OrganisationalMeasure ;
+    rdfs:comment "A custom concept representing procedures and measures implemented to ensure the quality of input data used in AI systems." .
+
+ex:InstructionForUse a odrl:Duty ;
+    rdfs:label "Instruction For Use" ;
+    rdfs:comment "A duty requiring the provision of clear instructions for use of an AI system or product, aligned with applicable legal and ethical standards." ;
+    odrl:action odrl:inform .
+
+
+ex:isTransparentToIndividuals a rdf:Property ;
+    rdfs:label "is transparent to individuals" ;
+    rdfs:comment "Marks whether a duty or policy explicitly ensures transparency to individuals." ;
+    rdfs:domain odrl:Duty ;
+    rdfs:range xsd:boolean .
+
+
+ex:MachineReadableMarking a odrl:Duty ;
+    rdfs:label "Machine-Readable Marking" ;
+    rdfs:comment "A duty requiring that assets be marked with machine-readable identifiers to facilitate automated processing and compliance verification." ;
+    odrl:action odrl:annotate  .
+
+
+ex:MitigationSupport a odrl:Duty ;
+    rdfs:label "Mitigation Support" ;
+    rdfs:comment "A duty requiring the provision of support measures to mitigate potential risks or harms associated with the use of an asset." ;
+    odrl:action odrl:provide .
+
+
+ex:NonComplianceNotification a odrl:Duty ;
+    rdfs:label "Non-Compliance Notification" ;
+    rdfs:comment "A duty requiring the notification of relevant parties in the event of non-compliance with specified policies or obligations." ;
+    odrl:action odrl:inform.
+
+
+ex:OutputInterpretability a odrl:Duty ;
+    rdfs:label "Output Interpretability" ;
+    rdfs:comment "A duty requiring that the outputs of a system are interpretable and understandable to end-users, facilitating transparency and trust." ;
+    odrl:action odrl:inform .
+    
+
+ex:ProvidedInformation a odrl:Asset ;
+    rdfs:label "Provided Information" ;
+    rdfs:comment "Information provided as part of documentation, including purpose, limits, and oversight of the system." ;
+    ex:hasIntendedPurpose "Assist in legal compliance review" ;
+    ex:hasPerformanceLimits "Not effective on unstructured data" ;
+    ex:hasHumanOversightMeasures "Requires monthly audit by human controller" .
+
+
+
+ex:ProvidesAccessToLogs a odrl:Duty ;
+    rdfs:label "Provides Access to Logs" ;
+    rdfs:comment "A duty requiring the provision of access to system logs for auditing and compliance purposes." ;
+    odrl:action odrl:read  .
+
+
+ex:PublicInformationDisclosure a odrl:Duty ;
+    rdfs:label "Public Information Disclosure" ;
+    rdfs:comment "A duty requiring the disclosure of specified information to the public, ensuring transparency and compliance with regulatory requirements." ;
+    odrl:action odrl:inform .
+
+
+ex:SensitiveDataSafeguards a owl:Class ;
+    rdfs:label "Sensitive Data Safeguards" ;
+    rdfs:comment "Measures and obligations to protect special categories of personal data as defined in GDPR Article 9 and secured under Article 32." ;
+    gdprov:wasDerivedFrom "GDPR-Article-9, GDPR-Article-32"^^xsd:string .
+
+
+ex:SourceTransparency a owl:Class ;
+    rdfs:label "Source Transparency" ;
+    rdfs:comment "A custom concept representing the transparency regarding the sources of personal data." ;
+    rdfs:subClassOf dpv:OrganisationalMeasure .
+
+
+ex:SyntheticContentDisclosure a odrl:Duty ;
+    rdfs:label "Synthetic Content Disclosure" ;
+    rdfs:comment "A duty requiring the disclosure that content has been synthetically generated or altered, ensuring transparency to viewers." ;
+    odrl:action odrl:inform .
+
+
+ex:TrainingDataMetadata a owl:Class ;
+    rdfs:label "Training Data Metadata" ;
+    rdfs:subClassOf dpv:OrganisationalMeasure ;
+    rdfs:comment "A custom concept representing metadata associated with training datasets used in AI systems, including provenance, quality, and representativeness." .
+
+
+ex:TrainingDataQuality a owl:Class ;
+    rdfs:label "Training Data Quality" ;
+    rdfs:subClassOf dpv:OrganisationalMeasure ;
+    rdfs:comment "A custom concept representing the quality measures applied to training data used in AI systems." .
+
+
+ex:TransparencyAccessibilityRequirement a odrl:Duty ;
+    rdfs:label "Transparency Accessibility Requirement" ;
+    rdfs:comment "A duty requiring that transparency-related information be made accessible to all relevant stakeholders, ensuring clarity and openness." ;
+    odrl:action odrl:inform .
+
+
+ex:TransparencyRequirement a odrl:Duty ;
+    rdfs:label "Transparency Requirement" ;
+    rdfs:comment "A duty requiring that information about data processing activities be made transparent to relevant stakeholders." ;
+    odrl:action odrl:inform  .
+
+
+ex:WorkerNotificationDuty a odrl:Duty ;
+    rdfs:label "Worker Notification Duty" ;
+    rdfs:comment "A duty requiring the notification of workers about specific policies, procedures, or changes affecting their roles or responsibilities." ;
+    odrl:action odrl:inform.
