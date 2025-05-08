@@ -17,3 +17,14 @@ This repository contains SHACL shapes designed to validate key constraints and l
 
 
 
+## Quick Validation (Online)
+
+To quickly validate the SHACL shapes against your ontology, you can use the [SHACL Playground]([https://shaclplay.sparna.fr/playground/](https://shacl.org/playground/)):
+
+1. Open the link: ([https://shaclplay.sparna.fr/playground/](https://shacl.org/playground/))
+2. Paste your ontology into the **Data Graph** tab.
+3. Paste `SHACL_SHAPES.ttl` into the **Shapes Graph** tab.
+4. Click **Validate**.
+5. Review results in the bottom pane (valid/invalid + details).
+
+This is especially useful for lightweight checks or sharing with collaborators.
