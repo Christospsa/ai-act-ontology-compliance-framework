@@ -15,13 +15,16 @@ It was developed as part of a master's thesis project and is intended to support
 
 ## Repository Structure
 
-| Folder / File        | Description                                                                 |
-|----------------------|-----------------------------------------------------------------------------|
-| `ontology/`          | Contains the OWL ontology in Turtle format (`.ttl`).                        |
-| `survey/`            | Survey structure, ontology diagram, and screenshots of Qualtrics interface. |
-| `sparql_queries/`    | Competency Questions (CQs) and SPARQL queries used to validate the ontology. |
-| `mapping_table/`     | Excel sheets used to map AI Act articles to ontology concepts.              |
-| `README.md`          | You’re here! Overview and navigation guide for the repository.              |
+| Folder / File         | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| `ontology/`            | Contains the OWL ontology in Turtle format (`.ttl`).                        |
+| `survey/`              | Survey structure, ontology diagram, and screenshots of Qualtrics interface.|
+| `sparql_queries/`      | Competency Questions (CQs) and SPARQL queries used to validate the ontology.|
+| `mapping_table/`       | Excel sheets used to map AI Act articles to ontology concepts.              |
+| `Reusable_Elements/`   | RDF snippets representing custom or reused elements aligned with AI Act.    |
+| `Shacl_Shapes/`        | SHACL shapes (`.ttl`) for validating AI Act constraints in the ontology.    |
+| `README.md`            | You’re here! Overview and navigation guide for the repository.              |
+
 
 ---
 
