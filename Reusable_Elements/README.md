@@ -1,7 +1,7 @@
-Reusable Semantic Elements
+# Reusable Semantic Elements
 This folder contains reusable ontology elements and patterns developed to support compliance modeling aligned with the EU AI Act. These elements are semantically grounded and structured to ensure interoperability, traceability, and reusability across AI system representations.
 
-Contents:
+## Contents:
 
 semantic reuse.xlsx
 This spreadsheet offers a curated mapping of selected AI Act requirements (e.g., from Articles and Annexes) to reusable ontology elements. Each row includes:
