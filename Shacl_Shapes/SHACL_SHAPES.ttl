@@ -1,0 +1,112 @@
+@prefix ai: <http://example.org/ai-act-risk#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ai:ChangeDeclarationShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must declare substantial changes post-market (Article 62)." ;
+            sh:minCount 1 ;
+            sh:path ai:hasDeclaredChange ] ;
+    sh:targetClass ai:AI_System .
+
+ai:ComplianceActivityShape a sh:NodeShape ;
+    sh:property [ sh:class ai:ContinuousComplianceAssurance ;
+            sh:message "AI System must include a continuous compliance assurance activity." ;
+            sh:path ai:hasComplianceActivity ] ;
+    sh:targetClass ai:AI_System .
+
+ai:ComplianceCheckShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must undergo a compliance check." ;
+            sh:minCount 1 ;
+            sh:path ai:hasComplianceCheck ] ;
+    sh:targetClass ai:AI_System .
+
+ai:ConformityAssessmentShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must include a conformity assessment review (Article 43)." ;
+            sh:minCount 1 ;
+            sh:path ai:hasComplianceCheck ] ;
+    sh:targetClass ai:AI_System .
+
+ai:FRIARequirementShape a sh:NodeShape ;
+    sh:property [ sh:message "High-risk AI System must include a Fundamental Rights Impact Assessment (Article 29)." ;
+            sh:minCount 1 ;
+            sh:path ai:requiresFundamentalRightsImpactAssessment ] ;
+    sh:targetClass ai:HighRiskAI .
+
+ai:HumanOversightShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must include at least one oversight enabler for human control." ;
+            sh:minCount 1 ;
+            sh:path ai:OversightEnablers ] ;
+    sh:targetClass ai:AI_System .
+
+ai:LoggingActivityShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must include at least one logging activity." ;
+            sh:minCount 1 ;
+            sh:path ai:hasLoggingActivity ] ;
+    sh:targetClass ai:AI_System .
+
+ai:MonitoringReviewShape a sh:NodeShape ;
+    sh:property [ sh:message "Post-market monitoring plan must link to a review process (Article 63)." ;
+            sh:minCount 1 ;
+            sh:path ai:hasReviewProcess ] ;
+    sh:targetClass ai:PostMarketMonitoringPlan .
+
+ai:PostMarketMonitoringShape a sh:NodeShape ;
+    sh:property [ sh:message "High-risk AI System must have a post-market monitoring plan (Article 61)." ;
+            sh:minCount 1 ;
+            sh:path ai:requiresPostMarketMonitoringPlan ] ;
+    sh:targetClass ai:HighRiskAI .
+
+ai:RegistrationRequirementShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must be registered in the appropriate database (Article 27)." ;
+            sh:minCount 1 ;
+            sh:path ai:hasRegistration ] ;
+    sh:targetClass ai:AI_System .
+
+ai:SeriousIncidentReportingShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must support serious incident reporting and corrective action (Article 66)." ;
+            sh:minCount 1 ;
+            sh:path ai:requiresCorrectiveAction ] ;
+    sh:targetClass ai:AI_System .
+
+ai:SuspensionTriggerShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must define deviation handling to support suspension logic (Article 67)." ;
+            sh:minCount 1 ;
+            sh:path ai:triggersDeviationHandling ] ;
+    sh:targetClass ai:AI_System .
+
+ai:SystemAccuracyRequirementShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System should have at least one AccuracyRequirement specified." ;
+            sh:minCount 1 ;
+            sh:path ai:AccuracyRequirement ] ;
+    sh:targetClass ai:AI_System .
+
+ai:SystemCybersecurityRequirementShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System should have at least one CybersecurityRequirement specified." ;
+            sh:minCount 1 ;
+            sh:path ai:CybersecurityRequirement ] ;
+    sh:targetClass ai:AI_System .
+
+ai:SystemIdentifierShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must have a unique system identifier (Article 26)." ;
+            sh:minCount 1 ;
+            sh:path ai:hasIdentifier ] ;
+    sh:targetClass ai:AI_System .
+
+ai:SystemRobustnessRequirementShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System should have at least one RobustnessRequirement specified." ;
+            sh:minCount 1 ;
+            sh:path ai:RobustnessRequirement ] ;
+    sh:targetClass ai:AI_System .
+
+ai:TechnicalDocumentationShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must have technical documentation." ;
+            sh:minCount 1 ;
+            sh:path ai:hasTechnicalDocumentation ] ;
+    sh:targetClass ai:AI_System .
+
+ai:ValueChainAgreementShape a sh:NodeShape ;
+    sh:property [ sh:message "AI System must include a value chain compliance agreement (Article 25)." ;
+            sh:minCount 1 ;
+            sh:path ai:requiresValueChainAgreement ] ;
+    sh:targetClass ai:AI_System .
+
