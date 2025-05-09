@@ -25,10 +25,20 @@
 :AnnualReportingDuty a owl:Class ;
     rdfs:label "AnnualReportingDuty" ;
     rdfs:comment "Obligation to provide yearly updates on the performance or risk posture of the AI system." .
+:hasAnnualReportingDuty a owl:ObjectProperty ;
+    rdfs:domain :PostMarketMonitoringPlan ;
+    rdfs:range :AnnualReportingDuty ;
+    rdfs:comment "Indicates the obligation to provide yearly system updates." .
+
 
 :BiometricAuthorization a owl:Class ;
     rdfs:label "BiometricAuthorization" ;
     rdfs:comment "Requirement to obtain authorization before deploying biometric identification systems." .
+
+:requiresBiometricAuthorization a owl:ObjectProperty ;
+    rdfs:domain :HighRiskAI ;
+    rdfs:range :BiometricAuthorization ;
+    rdfs:comment "Relates to the need for prior authorization in biometric deployments." .
 
 :ConsistencyCheck a owl:ObjectProperty ;
     rdfs:label "ConsistencyCheck" ;
@@ -43,12 +53,24 @@
     rdfs:label "ContinuousProcess" ;
     rdfs:comment "Indicates that risk management should be an ongoing, iterative procedure throughout the AI lifecycle." .
 
+:requiresContinuousProcess a owl:ObjectProperty ;
+    rdfs:label "requiresContinuousProcess" ;
+    rdfs:comment "Indicates that the risk process must be continuous." ;
+    rdfs:domain :RiskManagementSystem ;
+    rdfs:range :ContinuousProcess .
+
 :CybersecurityMeasures a owl:Class ;
     rdfs:subClassOf :RiskMitigationMeasure .
 
 :DeployersMonitoringDuty a owl:Class ;
     rdfs:label "DeployersMonitoringDuty" ;
     rdfs:comment "Obligation for deployers to proactively monitor AI systems for new or emerging risks." .
+
+:hasDeployersMonitoringDuty a owl:ObjectProperty ;
+    rdfs:label "hasDeployersMonitoringDuty" ;
+    rdfs:comment "Monitoring obligations for deployers post-deployment." ;
+    rdfs:domain :PostMarketMonitoringPlan ;
+    rdfs:range :DeployersMonitoringDuty .
 
 :TechnicalDocumentation a owl:Class ;
     rdfs:label "TechnicalDocumentation" ;
@@ -57,6 +79,12 @@
 :FalsificationAlert a owl:Class ;
     rdfs:label "FalsificationAlert" ;
     rdfs:comment "Warning or flag raised when an AI system or its documentation is identified as potentially falsified or tampered with." .
+
+:triggersFalsificationAlert a owl:ObjectProperty ;
+    rdfs:label "triggersFalsificationAlert" ;
+    rdfs:comment "Indicates possible falsification of AI system documentation." ;
+    rdfs:domain :TechnicalDocumentation ;
+    rdfs:range :FalsificationAlert .
 
 :ForeseeableRisk a owl:Class ;
     rdfs:comment "A risk that can be anticipated based on system design or use context." .
@@ -77,9 +105,21 @@
     rdfs:label "LawEnforcementRestriction" ;
     rdfs:comment "Limitations or obligations related to the deployment of AI systems in law enforcement contexts." .
 
+:hasLawEnforcementRestriction a owl:ObjectProperty ;
+    rdfs:label "hasLawEnforcementRestriction" ;
+    rdfs:comment "Connects an AI system with specific law enforcement deployment limitations." ;
+    rdfs:domain :AI_System ;
+    rdfs:range :LawEnforcementRestriction .
+
 :LifecyclePhase a owl:Class ;
     rdfs:label "LifecyclePhase" ;
     rdfs:comment "A stage in the lifecycle of an AI system, relevant for continuous risk management and updates." .
+
+:hasLifecyclePhase a owl:ObjectProperty ;
+    rdfs:label "hasLifecyclePhase" ;
+    rdfs:comment "Connects an AI system to its current lifecycle phase." ;
+    rdfs:domain :AI_System ;
+    rdfs:range :LifecyclePhase .
 
 :LinkedToRegulatedProduct a owl:ObjectProperty ;
     rdfs:label "linkedToRegulatedProduct" ;
@@ -116,6 +156,11 @@
     rdfs:label "PerformanceEvaluationPlan" ;
     rdfs:comment "Plan that defines how the performance of the AI system will be measured post-deployment." .
 
+:hasPerformanceEvaluationPlan a owl:ObjectProperty ;
+    rdfs:domain :AI_System ;
+    rdfs:range :PerformanceEvaluationPlan ;
+    rdfs:comment "Links an AI system to its defined post-deployment performance evaluation process." .
+
 :PostUseApprovalTrigger a owl:Class ;
     rdfs:label "PostUseApprovalTrigger" ;
     rdfs:comment "Requirement that follows the urgent deployment of an AI system, obligating formal approval and evaluation after initial use." .
@@ -123,6 +168,12 @@
 :ProductCategory a owl:Class ;
     rdfs:label "ProductCategory" ;
     rdfs:comment "Classification of the product incorporating the AI system, used for regulatory or risk assessment purposes." .
+
+:belongsToProductCategory a owl:ObjectProperty ;
+    rdfs:label "belongsToProductCategory" ;
+    rdfs:comment "Indicates the product category of the regulated item incorporating AI." ;
+    rdfs:domain :RegulatedProduct ;
+    rdfs:range :ProductCategory .
 
 :PurposeShiftToHighRisk a owl:ObjectProperty ;
     rdfs:label "PurposeShiftToHighRisk" ;
@@ -149,6 +200,11 @@
 :MinimalRisk a :RiskCategory .
 :UnacceptableRisk a :RiskCategory .
 
+:hasRiskCategory a owl:ObjectProperty ;
+    rdfs:domain :AI_System ;
+    rdfs:range :RiskCategory ;
+    rdfs:comment "Classifies the AI system by its associated risk category under the AI Act." .
+
 :RiskDetection a :LogPurposeType,
         owl:NamedIndividual ;
     rdfs:label "RiskDetection" ;
@@ -158,13 +214,31 @@
     rdfs:label "RiskManagementSystemReference" ;
     rdfs:comment "Reference structure to existing risk management frameworks already defined in regulatory sources." .
 
+:refersToExistingFramework a owl:ObjectProperty ;
+    rdfs:label "refersToExistingFramework" ;
+    rdfs:comment "References existing regulatory risk management frameworks." ;
+    rdfs:domain :RiskManagementSystem ;
+    rdfs:range :RiskManagementSystemReference .
+    
 :SeriousIncidentReporting a owl:Class ;
     rdfs:label "SeriousIncidentReporting" ;
     rdfs:comment "Requirement to report any incident related to the AI system that poses a serious risk to health, safety, or fundamental rights" .
 
+:requiresSeriousIncidentReporting a owl:ObjectProperty ;
+    rdfs:label "requiresSeriousIncidentReporting" ;
+    rdfs:comment "Obligation to report serious risks tied to the AI system." ;
+    rdfs:domain :PostMarketMonitoringPlan ;
+    rdfs:range :SeriousIncidentReporting .
+
 :SuspensionTrigger a owl:Class ;
     rdfs:label "SuspensionTrigger" ;
     rdfs:comment "Conditions that may lead to the suspension or withdrawal of an AI system’s authorization." .
+
+:hasSuspensionTrigger a owl:ObjectProperty ;
+    rdfs:label "hasSuspensionTrigger" ;
+    rdfs:comment "Conditions leading to suspension or withdrawal of authorization." ;
+    rdfs:domain :AuthorizationProcess ;
+    rdfs:range :SuspensionTrigger .
 
 :hasRiskManagementSystem a owl:ObjectProperty ;
     rdfs:domain :AI_System ;
@@ -188,6 +262,12 @@
 :UrgentUseProvision a owl:Class ;
     rdfs:label "UrgentUseProvision" ;
     rdfs:comment "Regulatory mechanism allowing the deployment of AI systems prior to formal approval under urgent or exceptional circumstances, such as civil protection or life safety threats." .
+
+:usesUrgentUseProvision a owl:ObjectProperty ;
+    rdfs:label "usesUrgentUseProvision" ;
+    rdfs:comment "Links an AI system to an urgent deployment provision." ;
+    rdfs:domain :AI_System ;
+    rdfs:range :UrgentUseProvision .
 
 :complianceRequirement a owl:DatatypeProperty ;
     rdfs:label "complianceRequirement" ;
