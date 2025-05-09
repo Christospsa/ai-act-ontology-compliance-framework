@@ -13,9 +13,14 @@
 
 
 
-:AccuracyByGroup a owl:ObjectProperty ;
-    rdfs:label "accuracy by group" ;
-    rdfs:comment "Links system performance results to specific user groups, supporting fairness and bias evaluation." .
+:AccuracyByGroup a owl:Class ;
+    rdfs:comment "Accuracy performance disaggregated by user groups." .
+
+:hasAccuracyByGroup a owl:ObjectProperty ;
+    rdfs:label "hasAccuracyByGroup" ;
+    rdfs:comment "Links system performance results to specific user groups, supporting fairness and bias evaluation." ;
+    rdfs:domain :AI_System ;
+    rdfs:range :AccuracyByGroup .
 
 :AnnualReportingDuty a owl:Class ;
     rdfs:label "AnnualReportingDuty" ;
@@ -26,7 +31,7 @@
     rdfs:comment "Requirement to obtain authorization before deploying biometric identification systems." .
 
 :ConsistencyCheck a owl:ObjectProperty ;
-    rdfs:label "consistency check" ;
+    rdfs:label "ConsistencyCheck" ;
     rdfs:comment "Connects an AI system to a consistency verification process against its intended purpose." ;
     rdfs:domain :AI_System ;
     rdfs:range :IntendedPurpose .
@@ -46,18 +51,24 @@
     rdfs:comment "Obligation for deployers to proactively monitor AI systems for new or emerging risks." .
 
 :TechnicalDocumentation a owl:Class ;
-    rdfs:label "Technical Documentation" ;
+    rdfs:label "TechnicalDocumentation" ;
     rdfs:comment "Represents the technical documentation required for demonstrating compliance with the AI Act, including system specifications, risk analysis, and logs." .
 
 :FalsificationAlert a owl:Class ;
     rdfs:label "FalsificationAlert" ;
     rdfs:comment "Warning or flag raised when an AI system or its documentation is identified as potentially falsified or tampered with." .
 
-:ForeseeableRisks a owl:ObjectProperty ;
-    rdfs:label "ForeseeableRisks" .
+:ForeseeableRisk a owl:Class ;
+    rdfs:comment "A risk that can be anticipated based on system design or use context." .
+
+:hasForeseeableRisk a owl:ObjectProperty ;
+    rdfs:label "hasForeseeableRisk" ;
+    rdfs:comment "Links an AI system to risks that can reasonably be anticipated during design and use." ;
+    rdfs:domain :AI_System ;
+    rdfs:range :ForeseeableRisk .
 
 :InputDataSpecs a owl:ObjectProperty ;
-    rdfs:label "input data specifications" ;
+    rdfs:label "InputDataSpecs" ;
     rdfs:comment "Links the AI system to its expected input data characteristics and requirements." ;
     rdfs:domain :AI_System ;
     rdfs:range :DataSpecification .
@@ -71,30 +82,35 @@
     rdfs:comment "A stage in the lifecycle of an AI system, relevant for continuous risk management and updates." .
 
 :LinkedToRegulatedProduct a owl:ObjectProperty ;
-    rdfs:label "linked to regulated product" ;
+    rdfs:label "linkedToRegulatedProduct" ;
     rdfs:comment "Links a SafetyComponentAI to the product it is integrated into, which is subject to regulation." ;
     rdfs:domain :SafetyComponentAI ;
     rdfs:range :RegulatedProduct .
 
 :LogPurpose a owl:ObjectProperty ;
-    rdfs:label "Log Purpose" ;
+    rdfs:label "LogPurpose" ;
     rdfs:comment "Links a logging activity to its purpose, such as risk detection, monitoring support, or modification tracking." ;
     rdfs:domain :LoggingActivity ;
     rdfs:range :LogPurposeType .
 
 :ModificationTracking a :LogPurposeType,
         owl:NamedIndividual ;
-    rdfs:label "Modification Tracking" ;
+    rdfs:label "ModificationTracking" ;
     rdfs:comment "Logging purpose used to record changes and updates made to the AI system, including configuration or retraining." .
 
 :MonitoringSupport a :LogPurposeType,
         owl:NamedIndividual ;
-    rdfs:label "Monitoring Support" ;
+    rdfs:label "MonitoringSupport" ;
     rdfs:comment "Logging purpose that supports the continuous observation and oversight of the AI system's performance and behavior." .
 
-:OversightEnablers a owl:ObjectProperty ;
-    rdfs:label "oversight enablers" ;
-    rdfs:comment "Identifies the mechanisms or features that support human oversight of the AI system." .
+:OversightEnabler a owl:Class ;
+    rdfs:comment "Mechanism or feature that enables human oversight." .
+
+:hasOversightEnabler a owl:ObjectProperty ;
+    rdfs:label "hasOversightEnabler" ;
+    rdfs:comment "Identifies the mechanisms or features that support human oversight of the AI system." ;
+    rdfs:domain :AI_System ;
+    rdfs:range :OversightEnabler .
 
 :PerformanceEvaluationPlan a owl:Class ;
     rdfs:label "PerformanceEvaluationPlan" ;
@@ -109,19 +125,19 @@
     rdfs:comment "Classification of the product incorporating the AI system, used for regulatory or risk assessment purposes." .
 
 :PurposeShiftToHighRisk a owl:ObjectProperty ;
-    rdfs:label "purpose shift to high-risk" ;
+    rdfs:label "PurposeShiftToHighRisk" ;
     rdfs:comment "Represents a change in intended purpose that triggers reclassification of the AI system as high-risk." ;
     rdfs:domain :AI_System ;
     rdfs:range :HighRiskAI .
 
 :ReclassificationTrigger a owl:ObjectProperty ;
-    rdfs:label "reclassification trigger" ;
+    rdfs:label "ReclassificationTrigger" ;
     rdfs:comment "Links an AI system to the event or condition that causes it to be reclassified as high-risk." ;
     rdfs:domain :AI_System ;
     rdfs:range :RiskLevelClassification .
 
 :RequiresThirdPartyAssessment a owl:ObjectProperty ;
-    rdfs:label "Requires Third Party Assessment" ;
+    rdfs:label "RequiresThirdPartyAssessment" ;
     rdfs:comment "Indicates whether a product or AI system requires a third-party conformity assessment." ;
     rdfs:domain :AI_System ;
     rdfs:range :ThirdPartyAssessment .
@@ -135,7 +151,7 @@
 
 :RiskDetection a :LogPurposeType,
         owl:NamedIndividual ;
-    rdfs:label "risk detection" ;
+    rdfs:label "RiskDetection" ;
     rdfs:comment "Logging purpose aimed at detecting risks in the AI system's operation." .
 
 :RiskManagementSystemReference a owl:Class ;
@@ -150,16 +166,31 @@
     rdfs:label "SuspensionTrigger" ;
     rdfs:comment "Conditions that may lead to the suspension or withdrawal of an AI system’s authorization." .
 
-:SystemLimitations a owl:ObjectProperty ;
-    rdfs:label "system limitations" ;
-    rdfs:comment "Links documentation or evaluation to known limitations of the AI system." .
+:hasRiskManagementSystem a owl:ObjectProperty ;
+    rdfs:domain :AI_System ;
+    rdfs:range :RiskManagementSystem .
+
+:HighRiskAI rdfs:subClassOf [
+    owl:onProperty :hasRiskManagementSystem ;
+    owl:someValuesFrom :RiskManagementSystem
+] .
+
+
+:SystemLimitation a owl:Class ;
+    rdfs:comment "A known constraint or shortcoming of an AI system." .
+
+:hasSystemLimitation a owl:ObjectProperty ;
+    rdfs:label "hasSystemLimitation" ;
+    rdfs:comment "Links documentation or evaluation to known limitations of the AI system." ;
+    rdfs:domain :AI_System ;
+    rdfs:range :SystemLimitation .
 
 :UrgentUseProvision a owl:Class ;
     rdfs:label "UrgentUseProvision" ;
     rdfs:comment "Regulatory mechanism allowing the deployment of AI systems prior to formal approval under urgent or exceptional circumstances, such as civil protection or life safety threats." .
 
 :complianceRequirement a owl:DatatypeProperty ;
-    rdfs:label "compliance Requirement" ;
+    rdfs:label "complianceRequirement" ;
     rdfs:comment "Indicates whether the high-risk AI system complies with relevant requirements under the AI Act." ;
     rdfs:range xsd:boolean .
 
@@ -171,29 +202,29 @@
     rdfs:domain :AI_System .
 
 :hasComplianceActivity a owl:ObjectProperty ;
-    rdfs:label "has Compliance Activity" ;
+    rdfs:label "hasComplianceActivity" ;
     rdfs:comment "Links an AI system to the compliance activities assigned for fulfilling regulatory obligations." ;
     rdfs:domain :AI_System ;
     rdfs:range :ComplianceActivity .
 
 :integrationTime a owl:DatatypeProperty ;
-    rdfs:label "Integration Time" ;
+    rdfs:label "integrationTime" ;
     rdfs:comment "Indicates whether the AI system was integrated before or after the product’s placement on the market." ;
     rdfs:domain :AI_System ;
     rdfs:range xsd:string .
 
 :intendedPurpose a owl:DatatypeProperty ;
-    rdfs:label "intended purpose" ;
+    rdfs:label "intendedPurpose" ;
     rdfs:comment "Describes the intended application or function for which the AI system is designed." ;
     rdfs:range xsd:string .
 
 :stateOfTheArt a owl:DatatypeProperty ;
     rdfs:label "Indicates whether the AI system adheres to current state-of-the-art practices and technologies.",
-        "state Of The Art" ;
+        "stateOfTheArt" ;
     rdfs:range xsd:string .
 
 :CircumventionPrevention a owl:Class ;
-    rdfs:label "circumvention prevention" ;
+    rdfs:label "CircumventionPrevention" ;
     rdfs:comment "Mechanisms designed to prevent users from bypassing or manipulating the safeguards of the AI system." ;
     rdfs:subClassOf :RiskMitigationMeasure .
 
@@ -202,12 +233,12 @@
     rdfs:comment "Describes the structure, format, and quality requirements of input data expected by the AI system." .
 
 :ErrorMitigation a owl:Class ;
-    rdfs:label "error mitigation" ;
+    rdfs:label "ErrorMitigation" ;
     rdfs:comment "Strategies and controls aimed at reducing or preventing errors in the AI system's behavior." ;
     rdfs:subClassOf :RiskMitigationMeasure .
 
 :FaultTolerance a owl:Class ;
-    rdfs:label "fault tolerance" ;
+    rdfs:label "FaultTolerance" ;
     rdfs:comment "Capability of the AI system to continue functioning correctly even when faults occur." ;
     rdfs:subClassOf :RiskMitigationMeasure .
 
@@ -217,13 +248,14 @@
 :RegulatedProduct a owl:Class .
 
 :RiskLevelClassification a owl:Class ;
-    rdfs:label "Risk Level Classification" ;
+    rdfs:label "RiskLevelClassification" ;
     rdfs:comment "A classification mechanism to determine whether an AI system is high-risk, based on Annex III and other regulatory criteria." .
 
 :SafetyComponentAI a owl:Class ;
     rdfs:label "SafetyComponentAI" ;
-    rdfs:comment "AI system or module used as part of a product’s safety function, subject to regulatory classification." .
-
+    rdfs:comment "AI system or module used as part of a product’s safety function, subject to regulatory classification." ;
+    rdfs:subClassOf :AI_System .
+    
 :ThirdPartyAssessment a owl:Class ;
     rdfs:label "ThirdPartAssessment" .
 
@@ -233,7 +265,7 @@
     rdfs:range :ARComplianceCheck .
 
 :hasTechnicalDocumentation a owl:ObjectProperty ;
-    rdfs:label "has Technical Documentation" ;
+    rdfs:label "hasTechnicalDocumentation" ;
     rdfs:comment "Links an AI system to its associated technical documentation and logs, required for compliance under the AI Act." ;
     rdfs:domain :AI_System ;
     rdfs:range :TechnicalDocumentation .
@@ -281,14 +313,12 @@
 :hasRiskAnalysis a owl:ObjectProperty ;
     rdfs:comment "Connects a risk management system to its risk analysis process." ;
     rdfs:domain :RiskManagementSystem ;
-    rdfs:range :RiskAnalysis ;
-    rdfs:subPropertyOf owl:topObjectProperty .
+    rdfs:range :RiskAnalysis .
 
 :hasRiskIdentification a owl:ObjectProperty ;
     rdfs:comment "Links a risk management system to its risk identification activity." ;
     rdfs:domain :RiskManagementSystem ;
-    rdfs:range :RiskIdentification ;
-    rdfs:subPropertyOf owl:topObjectProperty .
+    rdfs:range :RiskIdentification .
 
 :hasRiskMitigationMeasure a owl:ObjectProperty ;
     rdfs:comment "Links a risk management process to its associated mitigation strategies" ;
@@ -301,8 +331,7 @@
 
 :requiresFundamentalRightsImpactAssessment a owl:ObjectProperty ;
     rdfs:domain :HighRiskAI ;
-    rdfs:range :FundamentalRightsImpactAssessment ;
-    rdfs:subPropertyOf owl:topObjectProperty .
+    rdfs:range :FundamentalRightsImpactAssessment .
 
 :requiresPostMarketMonitoringPlan a owl:ObjectProperty ;
     rdfs:domain :HighRiskAI ;
@@ -335,7 +364,7 @@
     rdfs:comment "Represents a compliance verification step during conformity assessment procedures, as outlined in Article 43 of the AI Act." .
 
 :AccuracyRequirement a owl:Class ;
-    rdfs:label "accuracy requirement" ;
+    rdfs:label "AccuracyRequirement" ;
     rdfs:comment "Specifies the expected accuracy level of the AI system to ensure reliable performance." ;
     rdfs:subClassOf :RiskMitigationMeasure .
 
@@ -351,7 +380,7 @@
     rdfs:comment "Represents a corrective software or system update applied to a high-risk AI system post-market to address non-compliance or performance issues (AI Act Article 20)." .
 
 :CybersecurityRequirement a owl:Class ;
-    rdfs:label "cybersecurity requirement" ;
+    rdfs:label "CybersecurityRequirement" ;
     rdfs:comment "Includes measures to protect the AI system against unauthorized access or malicious attacks." ;
     rdfs:subClassOf :RiskMitigationMeasure .
 
@@ -383,7 +412,7 @@
     rdfs:comment "Initial process of identifying known or foreseeable risks associated with the AI system." .
 
 :RobustnessRequirement a owl:Class ;
-    rdfs:label "robustness requirement" ;
+    rdfs:label "RobustnessRequirement" ;
     rdfs:comment "Requirement that the AI system can handle variable conditions or perturbations without performance degradation." ;
     rdfs:subClassOf :RiskMitigationMeasure .
 
@@ -436,7 +465,7 @@
     rdfs:comment "Specific action or design safeguard taken to reduce the probability or severity of a risk." .
 
 :identifierCode a owl:DatatypeProperty ;
-    rdfs:label "identifier code" ;
+    rdfs:label "identifierCode" ;
     rdfs:comment "Represents the actual code or value of the AI system’s identifier for registration and traceability." ;
     rdfs:domain :AISystemIdentifier ;
     rdfs:range xsd:string .
@@ -554,7 +583,7 @@
     :hasImpactAssessmentActivity :ComplianceActivity_002 ;  # NEW property to hold the FRIA
     :hasIdentifier :AISystemIdentifier_001 ;
     :hasLoggingActivity :LoggingActivity_001 ;
-    :OversightEnablers "Manual override panel enabled" ;
+    :hasOversightEnabler "Manual override panel enabled" ;
     :hasRiskMitigationMeasure :Accuracy_001, :Robustness_001, :Cybersecurity_001 ;
     :AccuracyRequirement :Accuracy_001 ;
     :RobustnessRequirement :Robustness_001 ;
@@ -569,7 +598,7 @@
     :hasComplianceActivity :ComplianceActivity_003 ;
     :hasIdentifier :AISystemIdentifier_002 ;
     :hasLoggingActivity :LoggingActivity_002 ;
-    :OversightEnablers "Fallback protocol to human review" ;
+    :hasOversightEnabler "Fallback protocol to human review" ;
     :hasRiskMitigationMeasure :Accuracy_002, :Robustness_002, :Cybersecurity_002 ;
     :AccuracyRequirement :Accuracy_002 ;
     :RobustnessRequirement :Robustness_002 ;
@@ -582,7 +611,7 @@
     :hasTechnicalDocumentation :TechnicalDoc_003 ;
     :hasComplianceActivity :ComplianceActivity_004 ;
     :hasLoggingActivity :LoggingActivity_003 ;
-    :OversightEnablers "Interrupt and audit control embedded" ;
+    :hasOversightEnabler "Interrupt and audit control embedded" ;
     :hasRiskMitigationMeasure :Accuracy_003, :Robustness_003, :Cybersecurity_003 ;
     :AccuracyRequirement :Accuracy_003 ;
     :RobustnessRequirement :Robustness_003 ;
