@@ -35,7 +35,7 @@ ai:FRIARequirementShape a sh:NodeShape ;
 ai:HumanOversightShape a sh:NodeShape ;
     sh:property [ sh:message "AI System must include at least one oversight enabler for human control." ;
             sh:minCount 1 ;
-            sh:path ai:OversightEnablers ] ;
+            sh:path ai:hasOversightEnabler ] ;
     sh:targetClass ai:AI_System .
 
 ai:LoggingActivityShape a sh:NodeShape ;
