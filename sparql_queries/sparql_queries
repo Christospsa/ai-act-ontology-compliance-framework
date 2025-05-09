@@ -1,15 +1,15 @@
-#1ST QUESTION
+#1ST QUERY
 
 PREFIX : <http://example.org/ai-act-risk#>
 
 SELECT ?system ?riskCategory
 WHERE {
-  ?system a :AI_System ;
+  ?system a:AI_System ;
           :hasRiskCategory ?riskCategory .
 }
 
 
-#2nd QUESTION
+#2nd QUERY
 PREFIX : <http://example.org/ai-act-risk#>
 
 SELECT ?system ?complianceCheck
@@ -18,7 +18,7 @@ WHERE {
           :hasComplianceCheck ?complianceCheck .
 }
 
-#3rd QUESTION
+#3rd QUERY
 PREFIX : <http://example.org/ai-act-risk#>
 
 SELECT ?system ?documentation
@@ -27,28 +27,28 @@ WHERE {
           :hasTechnicalDocumentation ?documentation .
 }
 
-#4th QUESTION
+#4th QUERY
 SELECT ?system ?change
 WHERE {
   ?system a :AI_System ;
           :hasDeclaredChange ?change .
 }
 
-#5th QUESTION
+#5th QUERY
 SELECT ?system ?monitoringPlan
 WHERE {
   ?system a :HighRiskAI ;
           :requiresPostMarketMonitoringPlan ?monitoringPlan .
 }
 
-#6th QUESTION
+#6th QUERY
 SELECT ?system ?activity
 WHERE {
   ?system a :HighRiskAI ;
           :hasComplianceActivity ?activity .
 }
  
-#7th QUESTION
+#7th QUERY
 SELECT ?system ?registration ?identifier ?code
 WHERE {
   ?system a :AI_System ;
