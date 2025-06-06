@@ -1,6 +1,10 @@
 # Survey Structure: Ontology Framework Evaluation
 
-This survey was designed to collect structured feedback on the AI Act Ontology Framework. It includes four main sections to assess usability, clarity, completeness, and relevance of the proposed approach.
+This survey is part of a master’s thesis project focused on developing and validating an ontology aligned with the AI Act. The ontology formalizes obligations, risk classifications, and documentation requirements from the AI Act.
+
+We’re particularly interested in your opinion on how clear, complete, and usable the ontology is, based on the examples provided.
+
+Your answers will remain anonymous and will help improve the quality and relevance of the ontology. The survey will take approximately 10 minutes.
 
 **Preview Survey Link:**  
 [Qualtrics Survey (Preview)](https://uva.eu.qualtrics.com/jfe/preview/previewId/0afbbce2-89a5-4cac-bdbf-288de555940a/SV_26rVulCOdUfGzWe?Q_CHL=preview&Q_SurveyVersionID=current)
@@ -19,13 +23,67 @@ Gathering participant profile and expertise.
 ---
 
 ## Section 2: Framework Overview
-Providing a concise description of the ontology.
+This ontology-based framework has been developed to model compliance obligations under the EU AI Act. The design focuses on risk classification, documentation, monitoring, and registration requirements.
 
-- One-paragraph summary of the framework's goal
-- Diagram (WebVOWL / draw.io) showing main classes and relations
-- Example Competency Question with a SPARQL query
-- One brief use case scenario
+The ontology supports reasoning over these obligations using machine-readable queries (SPARQL) and constraint validation (SHACL). It enables stakeholders such as compliance officers, technical experts, and legal professionals to assess AI system status and obligations efficiently based on risk category and regulatory requirements.
 
+The full ontology is available on GitHub: https://github.com/Christospsa/ai-act-ontology-compliance-framework
+
+To visualize the ontology, you can use WebVOWL:
+
+    1. Open the WebVOWL page (https://service.tib.eu/webvowl/).
+
+    2. Click “Load from file” or “Load from URL”.
+
+    3. Upload the Turtle file or paste the raw GitHub URL to see the ontology structure interactively.
+
+There is also provided one specific example of ontology.
+
+### Example Competency Questions (CQs) Answered by the Framework:
+
+The following competency questions illustrate the types of compliance-related queries that the ontology-based framework is designed to support:
+
+CQ1: What is the risk category of a given AI system?
+CQ2: Has the AI system undergone the required conformity assessment procedure?
+CQ3: What technical documentation and system logs are associated with a specific AI system?
+CQ4: Which declared changes have been made to an AI system post-deployment?
+Q5: Is there a post-market monitoring plan and review process linked to the system?
+Q6: What compliance activities have been assigned to a provider for a high-risk AI system?
+Q7: What is the status of the AI system registration and identifier metadata?
+
+### SPARQL Query Example
+
+This SPARQL query retrieves all AI systems defined in the ontology along with their associated risk categories. It is useful for identifying how each system is classified under the AI Act's risk-based framework.
+
+SELECT ?system ?riskCategory
+WHERE {
+?system a :AI_System ;
+              :hasRiskCategory ?riskCategory .
+}
+
+### SHACL Shape Example (Constraint Validation)
+
+Below is an example of a SHACL shape used to validate that an AI_System has a unique identifier, as required by Article 26 of the AI Act.
+
+ai:SystemIdentifierShape a sh:NodeShape ;
+    sh:targetClass ai:AI_System ;
+    sh:property [
+        sh:path ai:hasIdentifier ;
+        sh:minCount 1 ;
+        sh:message "AI System must have a unique system identifier (Article 26)." ;
+     ] .
+
+
+### Example Scenario:
+
+A compliance officer is tasked with verifying whether an AI system classified as high-risk has fulfilled its legal obligations under the AI Act. The officer needs to confirm:
+
+-    The system’s risk category (HighRisk).
+-    Completion of the required conformity assessment procedure.
+-    Existence of a post-market monitoring plan.
+-    Proper registration and assigned identifier.
+
+Using this ontology-based framework, these questions can be answered through semantic queries, ensuring traceability and supporting compliance activities.
 ---
 
 ## Section 3: Usability and Usefulness (Likert Scale)
@@ -34,11 +92,11 @@ Participants rate agreement (1 = Strongly Disagree, 5 = Strongly Agree):
 - The ontology-based framework is easy to understand.
 - The structure of the ontology is clear and logically organized.
 - The framework supports practical reasoning about AI Act obligations.
-- I could imagine using this framework in compliance or documentation tasks.
-- The SPARQL-based queries are understandable.
-- The framework adequately represents risk-based classification.
-- Linking legal obligations to machine-readable queries is valuable.
-- The framework could be reused for other regulations (e.g., GDPR).
+- I could imagine using this framework (or a similar one) in a compliance or documentation task.
+- The SPARQL-based compliance questions are understandable.
+- The framework adequately represents risk-based classification as required by the AI Act.
+- I find the idea of linking legal obligations to machine-readable queries valuable.
+- The framework could be extended or reused for other regulations (e.g., GDPR).
 
 ---
 
@@ -47,8 +105,8 @@ Free-text responses for deeper insights.
 
 - What do you find most useful about the framework?
 - What aspects were unclear or confusing?
-- Are any important elements missing?
-- Do you have suggestions for improvements or new use cases?
+- Do you see any important elements missing (e.g., specific obligations, categories)?
+- Do you have suggestions for improvement or additional use cases?
 
 ---
 
