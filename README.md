@@ -48,7 +48,7 @@ These are supported through SPARQL queries in the `sparql_queries/` folder.
 
 As part of the evaluation, a short stakeholder survey was developed:
 
-[**Click here to open the survey**](https://your-survey-link-goes-here)
+[**Click here to open the survey**](https://[your-survey-link-goes-here](https://uva.fra1.qualtrics.com/jfe/form/SV_26rVulCOdUfGzWe))
 
 The survey assesses the usability, completeness, and relevance of the framework among AI governance professionals.
 
