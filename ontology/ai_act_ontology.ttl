@@ -87,12 +87,12 @@ ai:hasDeployersMonitoringDuty a owl:ObjectProperty ;
     rdfs:range ai:DeployersMonitoringDuty ;
     rdfs:comment "Provider’s obligation to register the Member States where the AI system is deployed." .
 
-ai:ProviderSignatory a owl:DatatypeProperty ;
+ai:providerSignatory a owl:DatatypeProperty ;
     rdfs:domain ai:Provider ;
     rdfs:range xsd:string ;
     rdfs:comment "Provider must include trade name, unique system identifier, and intended purpose in registration (Annex VIII)." .
 
-ai:ProviderIdentity a owl:DatatypeProperty ;
+ai:providerIdentity a owl:DatatypeProperty ;
     rdfs:domain ai:Provider ;
     rdfs:range xsd:string ;
     rdfs:comment "Ensures traceability and accountability of the provider (Art. 23)." .
