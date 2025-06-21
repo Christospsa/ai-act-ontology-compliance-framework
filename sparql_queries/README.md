@@ -1,8 +1,8 @@
 # SPARQL Queries for Ontology Validation
 
-This folder contains the set of SPARQL queries used to test and validate the expressiveness of the ontology through Competency Questions (CQs).
+This folder contains the set of SPARQL queries used to test and validate the expressiveness of the ontology through competence questions (CQs).
 
-These queries align with the main legal obligations of the EU AI Act, especially in the context of high-risk AI systems. Each query answers a specific compliance-related question derived from the mapped requirements.
+These questions align with the main legal obligations of EU AI Act, in particular in the context of high-risk AI systems. Each question addresses a specific compliance issue arising from the mapped requirements.
 
 ## File:
 
