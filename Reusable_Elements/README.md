@@ -1,5 +1,5 @@
 # Reusable Semantic Elements
-This folder contains reusable ontology elements and patterns developed to support compliance modeling aligned with the EU AI Act. These elements are semantically grounded and structured to ensure interoperability, traceability, and reusability across AI system representations.
+This folder contains reusable ontology elements and templates developed to support compliance modeling in accordance with EU AI Act. These elements have a semantic basis and are structured to ensure interoperability, traceability and reusability.
 
 ## Contents:
 
@@ -19,4 +19,4 @@ Explanatory Notes
 Recommended Type (Class, Data Property, Object Property)
 
 ### semantic_reuse_snippets_examples.ttl
-This Turtle file provides implementation examples of the reusable elements defined in the spreadsheet. It demonstrates how to instantiate classes, properties, and restrictions using terms from ODRL, DPV, and GDPRov, customized where needed. These examples are designed to plug into broader compliance ontologies or be extended for specific use cases.
+This Turtle file provides examples of how to apply the reusable elements defined in the spreadsheet. It shows how to create snapshots of classes, properties and constraints using terms from ODRL, DPV and GDPRov, adapted where necessary. These examples are designed to be integrated into broader compliance ontologies or extended for specific use cases.
