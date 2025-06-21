@@ -1,6 +1,6 @@
 # SHACL Validation for AI Act Ontology
 
-This repository contains SHACL shapes designed to validate key constraints and logical consistency within an ontology aligned with the EU AI Act.
+This repository contains SHACL shapes designed to validate basic constraints and consistency logic within an ontology that is aligned with EU AI Act.
 
 ## Contents
 
